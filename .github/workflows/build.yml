@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push: 
+    branches:
+      - master
+    paths:
+      - "*.go"
+      - "Makefile"
+      - "!README.md"
+      - "!LICENSE"
+      - "!.gitignore"
+
+permissions: 
+  contents: read
+
+jobs: 
+  build:
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix: 
+        os: [ubuntu-22.04, ubuntu-24.04, windows-2019, windows-2022, windows-2025, ubuntu-22.04-arm, ubuntu-24.04-arm, macos-13, macos-14, macos-15]
+    runs-on: ${{ matrix.os }}
+    name: Build executable (${{ matrix.os }})
+    env: 
+      EXECUTABLE_SUFFIX: ${{ startsWith(matrix.os, 'windows') && '.exe' || '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+      - name: Setup go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "^1.23"
+      - name: Build
+        run: make build
+      - name: Test
+        run: make test
+      - name: Run
+        if: ${{ !startsWith(matrix.os, 'windows') }}
+        run: chmod +x ./mcping
+      - name: Run
+        run: |
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --version
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host mc.hypixel.net --protocol 769 --verbose
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host play.cubecraft.net --protocol 769
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host rebel.nekoli.dev --protocol 768
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 3
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 4
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 5
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcping-golang-${{ matrix.os }}-${{ github.run_id }}
+          path: ./mcping${{ env.EXECUTABLE_SUFFIX }}
+          retention-days: 1
+          overwrite: true
+        continue-on-error: true
+      - run: make clean
+        if: ${{ always() }}
+        continue-on-error: true
