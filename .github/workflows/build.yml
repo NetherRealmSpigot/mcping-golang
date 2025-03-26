@@ -45,9 +45,9 @@ jobs:
       - name: Run
         run: |
           ./mcping${{ env.EXECUTABLE_SUFFIX }} --version
-          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host mc.hypixel.net --protocol 769 --verbose
-          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host play.cubecraft.net --protocol 769
-          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host rebel.nekoli.dev --protocol 768
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host mc.hypixel.net --protocol 770 --verbose
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host play.cubecraft.net --protocol 770
+          ./mcping${{ env.EXECUTABLE_SUFFIX }} --host rebel.nekoli.dev --protocol 769
           ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 3
           ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 4
           ./mcping${{ env.EXECUTABLE_SUFFIX }} --host skyfactory.craftersland.net --protocol 5

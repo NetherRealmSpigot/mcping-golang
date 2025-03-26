@@ -91,6 +91,7 @@ const (
 	Minecraft_1_21_2 = 768
 	Minecraft_1_21_3 = 768
 	Minecraft_1_21_4 = 769
+	Minecraft_1_21_5 = 770
 )
 
 var knownProtocolNumbers = map[int]struct{}{
@@ -155,6 +156,7 @@ var knownProtocolNumbers = map[int]struct{}{
 	Minecraft_1_21_1: {},
 	Minecraft_1_21_3: {},
 	Minecraft_1_21_4: {},
+	Minecraft_1_21_5: {},
 }
 
 func IsKnownProtocolNumber(n int) bool {

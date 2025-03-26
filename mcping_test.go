@@ -23,7 +23,7 @@ func TestIsKnownProtocolNumber(t *testing.T) {
 		Minecraft_1_18, Minecraft_1_18_1, Minecraft_1_18_2,
 		Minecraft_1_19, Minecraft_1_19_1, Minecraft_1_19_2, Minecraft_1_19_3, Minecraft_1_19_4,
 		Minecraft_1_20, Minecraft_1_20_1, Minecraft_1_20_2, Minecraft_1_20_3, Minecraft_1_20_4, Minecraft_1_20_5, Minecraft_1_20_6,
-		Minecraft_1_21, Minecraft_1_21_1, Minecraft_1_21_2, Minecraft_1_21_3, Minecraft_1_21_4,
+		Minecraft_1_21, Minecraft_1_21_1, Minecraft_1_21_2, Minecraft_1_21_3, Minecraft_1_21_4, Minecraft_1_21_5,
 	}
 	t.Run("For known protocol number should return true", func(t0 *testing.T) {
 		for _, i := range nums {
