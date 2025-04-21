@@ -1,4 +1,4 @@
-package main
+package protocols
 
 const (
 	Minecraft_1_7   = 3

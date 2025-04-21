@@ -32,8 +32,6 @@ builds:
     - goos: windows
       goarch: arm
       goarm: "7"
-    - goos: windows
-      goarch: arm64
     - goos: freebsd
       goarch: ppc64le
     - goos: freebsd

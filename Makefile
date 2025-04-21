@@ -19,7 +19,7 @@ build:
 
 .PHONY: test
 test:
-	go test -count=1 -v ./
+	go test -count=1 -v -p 1 ./...
 
 .PHONY: clean
 clean:

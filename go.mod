@@ -1,4 +1,4 @@
-module mcping-golang
+module github.com/NetherRealmSpigot/mcping-golang
 
 go 1.24.2
 

@@ -1,11 +1,9 @@
-package main
+package protocols
 
 import (
 	"github.com/stretchr/testify/require"
 	"testing"
 )
-
-// TODO: Test cases?
 
 func TestIsKnownProtocolNumber(t *testing.T) {
 	nums := []int{
