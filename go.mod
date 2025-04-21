@@ -2,6 +2,14 @@ module github.com/NetherRealmSpigot/mcping-golang
 
 go 1.24.2
 
+// RETARD
+// For the fuck sake deploy your own mirror whenever possible
+retract (
+	v0.0.3
+	v0.0.2
+	v0.0.1
+)
+
 require (
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
